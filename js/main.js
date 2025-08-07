@@ -12,6 +12,7 @@ class SimulationManager {
     this.initializeElements();
     this.initializeEventListeners();
     this.initializeSimulation();
+    this.usePretrainedBrain();
   }
 
   initializeElements() {

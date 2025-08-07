@@ -6,7 +6,7 @@ class Controls {
     this.reverse = false;
 
     switch (type) {
-      case "KEYS":
+      case "AI":
         this.#addKeyboardListeners();
         break;
       case "DUMMY":
@@ -16,7 +16,8 @@ class Controls {
   }
 
   #addKeyboardListeners() {
-    document.onkeydown = (event) => {
+    // Use addEventListener instead of onkeydown to avoid conflicts
+    document.addEventListener("keydown", (event) => {
       switch (event.key) {
         case "ArrowLeft":
           this.left = true;
@@ -31,8 +32,9 @@ class Controls {
           this.reverse = true;
           break;
       }
-    };
-    document.onkeyup = (event) => {
+    });
+
+    document.addEventListener("keyup", (event) => {
       switch (event.key) {
         case "ArrowLeft":
           this.left = false;
@@ -47,6 +49,6 @@ class Controls {
           this.reverse = false;
           break;
       }
-    };
+    });
   }
 }

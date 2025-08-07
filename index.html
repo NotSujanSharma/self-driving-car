@@ -1,50 +1,189 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AI Self-Driving Car Simulator</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <h1 class="title">🚗 AI Self-Driving Car Simulator</h1>
+                <p class="subtitle">
+                    Neural Network Powered Autonomous Vehicle
+                </p>
+            </header>
 
-<!DOCTYPE html>
-<head>
-    <title>Self-driving car - No libraries</title>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-</head>
-<body>
-    <canvas id="carCanvas"></canvas>
-    <div id="verticalButtons">
-        <button onclick="save()">💾</button>
-        <button onclick="discard()">🗑️</button>
-        <div class='dropdown'>
-            🧬
-            <select name="mutationAmount" id="mutationAmount"
-                onchange="localStorage.setItem('mutationAmount',this.value)">
-                <option value="0.1">0.1</option>
-                <option value="0.2">0.2</option>
-                <option value="0.3">0.3</option>
-                <option value="0.4">0.4</option>
-                <option value="0.5" selected>0.5</option>
-                <option value="0.6">0.6</option>
-                <option value="0.7">0.7</option>
-                <option value="0.8">0.8</option>
-                <option value="0.9">0.9</option>
-                <option value="1.0">1.0</option>
-            </select>
+            <div class="main-content">
+                <div class="canvas-container">
+                    <canvas id="carCanvas" width="300" height="600"></canvas>
+                    <canvas
+                        id="networkCanvas"
+                        width="500"
+                        height="600"
+                    ></canvas>
+                </div>
+
+                <div class="controls-panel">
+                    <div class="section">
+                        <h3>🎛️ Controls</h3>
+                        <div class="control-group">
+                            <button
+                                id="startBtn"
+                                class="btn btn-primary"
+                                style="display: none !important"
+                            >
+                                Start Simulation
+                            </button>
+                            <button
+                                id="usePretrainedBrain"
+                                class="btn btn-primary"
+                            >
+                                Use Pretrained Brain
+                            </button>
+                            <button
+                                id="stopBtn"
+                                class="btn btn-secondary"
+                                style="display: none !important"
+                            >
+                                Stop
+                            </button>
+                            <button id="resetBtn" class="btn btn-danger">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3>🧠 Neural Network</h3>
+                        <div class="control-group">
+                            <label for="carCount"
+                                >Cars:
+                                <span id="carCountValue">100</span></label
+                            >
+                            <input
+                                type="range"
+                                id="carCount"
+                                min="1"
+                                max="1000"
+                                value="100"
+                                class="slider"
+                            />
+
+                            <label for="mutationRate"
+                                >Mutation Rate:
+                                <span id="mutationValue">0.1</span></label
+                            >
+                            <input
+                                type="range"
+                                id="mutationRate"
+                                min="0"
+                                max="1"
+                                step="0.01"
+                                value="0.1"
+                                class="slider"
+                            />
+                        </div>
+
+                        <div class="control-group">
+                            <button id="saveBtn" class="btn btn-success">
+                                💾 Save Best Brain
+                            </button>
+                            <button id="loadBtn" class="btn btn-info">
+                                📁 Load Brain
+                            </button>
+                            <button id="deleteBtn" class="btn btn-warning">
+                                🗑️ Delete Brain
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="controls-panel">
+                    <div class="section">
+                        <h3>📊 Statistics</h3>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Generation:</span>
+                                <span id="generation" class="stat-value"
+                                    >1</span
+                                >
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Best Distance:</span>
+                                <span id="bestDistance" class="stat-value"
+                                    >0</span
+                                >
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cars Alive:</span>
+                                <span id="carsAlive" class="stat-value"
+                                    >100</span
+                                >
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Time:</span>
+                                <span id="time" class="stat-value">0s</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3>🎨 Visual Settings</h3>
+                        <div class="control-group">
+                            <label class="checkbox-label">
+                                <input
+                                    type="checkbox"
+                                    id="showSensors"
+                                    checked
+                                />
+                                <span class="checkmark"></span>
+                                Show Sensors
+                            </label>
+
+                            <label class="checkbox-label">
+                                <input
+                                    type="checkbox"
+                                    id="showNetwork"
+                                    checked
+                                />
+                                <span class="checkmark"></span>
+                                Show Neural Network
+                            </label>
+
+                            <label class="checkbox-label">
+                                <input
+                                    type="checkbox"
+                                    id="showTraffic"
+                                    checked
+                                />
+                                <span class="checkmark"></span>
+                                Show Traffic
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <p>
+                    Built with vanilla JavaScript • Neural Network AI • No
+                    external libraries
+                </p>
+            </footer>
         </div>
-        <div class='dropdown'>
-            🚗
-            <select name="carCount" id="carCount"
-                onchange="localStorage.setItem('carCount',this.value)">
-                <option value="1" selected>1</option>
-                <option value="10">10</option>
-                <option value="100">100</option>
-                <option value="1000">1000</option>
-            </select>
-        </div>
-    </div>
-    <canvas id="networkCanvas"></canvas>
-    <script src="visualizer.js"></script>
-    <script src="network.js"></script>
-    <script src="sensor.js"></script>
-    <script src="utils.js"></script>
-    <script src="road.js"></script>
-    <script src="controls.js"></script>
-    <script src="car.js"></script>
-    <script src="main.js"></script>
-</body>
+
+        <script src="utils.js"></script>
+        <script src="road.js"></script>
+        <script src="sensor.js"></script>
+        <script src="network.js"></script>
+        <script src="car.js"></script>
+        <script src="controls.js"></script>
+        <script src="visualizer.js"></script>
+        <script src="main.js"></script>
+    </body>
 </html>

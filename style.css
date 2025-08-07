@@ -1,41 +1,331 @@
-body {
+* {
     margin: 0;
-    background: darkgray;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#verticalButtons {
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 300;
+}
+
+.main-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.canvas-container {
+    display: flex;
+    gap: 20px;
+}
+
+#carCanvas,
+#networkCanvas {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.controls-panel {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    max-width: 350px;
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #444;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 8px;
+}
+
+.control-group {
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    margin-top: 1em;
 }
 
-button {
+.btn {
+    padding: 12px 20px;
     border: none;
-    border-radius: 5px;
-    padding: 5px 5px 7px 5px;
-    margin: 2px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    color: white;
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #fd79a8, #e84393);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #00cec9, #00b894);
+    color: white;
+}
+
+.btn-info {
+    background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+    color: white;
+}
+
+.btn-warning {
+    background: linear-gradient(45deg, #fdcb6e, #e17055);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #667eea, #764ba2);
     cursor: pointer;
 }
-button:hover {
-    background: blue;
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    cursor: pointer;
+    border: none;
 }
 
-#networkCanvas {
-    background: black;
-}
-#carCanvas {
-    background: lightgray;
-}
-.dropdown {
+label {
+    font-weight: 500;
+    color: #555;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    margin: 2px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.stat-label {
+    font-weight: 500;
+    color: #666;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: #667eea;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+    position: relative;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: "✓";
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.footer p {
+    color: #666;
+    font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .canvas-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controls-panel {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .canvas-container {
+        overflow-x: auto;
+    }
+
+    #carCanvas,
+    #networkCanvas {
+        width: 250px;
+        height: 500px;
+    }
+}
+
+/* Animation for loading */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.loading {
+    animation: pulse 2s infinite;
+}
+
+/* Gradient border animation */
+@keyframes gradientBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animated-border {
+    background: linear-gradient(-45deg, #667eea, #764ba2, #667eea, #764ba2);
+    background-size: 400% 400%;
+    animation: gradientBorder 3s ease infinite;
+    padding: 3px;
+    border-radius: 18px;
+}
+
+.animated-border canvas {
     border: none;
-    border-radius: 5px;
-    background: whitesmoke;
-    padding: 2px;
+    border-radius: 15px;
 }

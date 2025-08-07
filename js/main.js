@@ -100,7 +100,7 @@ class SimulationManager {
       switch (e.key) {
         case " ":
           e.preventDefault();
-          this.toggleSimulation();
+          this.deleteBrain();
           break;
         case "r":
         case "R":

@@ -6,7 +6,7 @@ class Controls {
     this.reverse = false;
 
     switch (type) {
-      case "AI":
+      case "KEYS":
         this.#addKeyboardListeners();
         break;
       case "DUMMY":
@@ -16,7 +16,6 @@ class Controls {
   }
 
   #addKeyboardListeners() {
-    // Use addEventListener instead of onkeydown to avoid conflicts
     document.addEventListener("keydown", (event) => {
       switch (event.key) {
         case "ArrowLeft":

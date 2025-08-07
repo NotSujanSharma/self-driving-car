@@ -6,7 +6,7 @@
 
 body {
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #000e57;
     min-height: 100vh;
     color: #333;
 }
@@ -30,7 +30,7 @@ body {
 .title {
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: #2670ff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
@@ -104,32 +104,32 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: blue;
     color: white;
 }
 
 .btn-secondary {
-    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    background: #74b9ff;
     color: white;
 }
 
 .btn-danger {
-    background: linear-gradient(45deg, #fd79a8, #e84393);
+    background: #e84393;
     color: white;
 }
 
 .btn-success {
-    background: linear-gradient(45deg, #00cec9, #00b894);
+    background: #00b894;
     color: white;
 }
 
 .btn-info {
-    background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+    background: #6c5ce7;
     color: white;
 }
 
 .btn-warning {
-    background: linear-gradient(45deg, #fdcb6e, #e17055);
+    background: #ff7055;
     color: white;
 }
 
@@ -157,7 +157,7 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: #667eea;
     cursor: pointer;
 }
 
@@ -165,7 +165,7 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: #667eea;
     cursor: pointer;
     border: none;
 }
@@ -226,7 +226,7 @@ label {
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkmark {
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: #667eea;
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkmark::after {

@@ -30,6 +30,9 @@ class SimulationManager {
     // Control elements
     this.startBtn = document.getElementById("startBtn");
     this.usePretrainedBrainBtn = document.getElementById("usePretrainedBrain");
+    this.notUsePretrainedBrainBtn = document.getElementById(
+      "notUsePretrainedBrain",
+    );
     this.stopBtn = document.getElementById("stopBtn");
     this.resetBtn = document.getElementById("resetBtn");
     this.saveBtn = document.getElementById("saveBtn");
@@ -56,7 +59,7 @@ class SimulationManager {
     this.mutationValue = document.getElementById("mutationValue");
 
     // Load saved settings
-    const savedCarCount = localStorage.getItem("carCount") || 50;
+    const savedCarCount = localStorage.getItem("carCount") || 120;
     const savedMutation = localStorage.getItem("mutationAmount") || 0.1;
 
     this.carCountSlider.value = savedCarCount;
@@ -70,6 +73,9 @@ class SimulationManager {
     this.startBtn.addEventListener("click", () => this.startSimulation());
     this.usePretrainedBrainBtn.addEventListener("click", () =>
       this.usePretrainedBrain(),
+    );
+    this.notUsePretrainedBrainBtn.addEventListener("click", () =>
+      this.deleteBrain(),
     );
     this.stopBtn.addEventListener("click", () => this.stopSimulation());
     this.resetBtn.addEventListener("click", () => this.resetSimulation());
@@ -279,6 +285,8 @@ class SimulationManager {
     };
 
     localStorage.setItem("bestBrain", JSON.stringify(defaultBrain));
+    this.usePretrainedBrainBtn.innerText = "Using Pretrained Brain";
+
     this.loadBrain();
     this.resetSimulation();
   }
@@ -386,6 +394,10 @@ class SimulationManager {
 
   deleteBrain() {
     localStorage.removeItem("bestBrain");
+    this.cars = [];
+    this.generation = 0;
+    this.resetSimulation();
+    this.usePretrainedBrainBtn.innerText = "Use Pretrained Brain";
     this.showNotification("🗑️ Brain deleted successfully!", "warning");
   }
 

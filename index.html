@@ -13,7 +13,7 @@
     <body>
         <div class="container">
             <header class="header">
-                <h1 class="title">🚗 AI Self-Driving Car Simulator</h1>
+                <h1 class="title">AI Self-Driving Car Simulator</h1>
                 <p class="subtitle">
                     Neural Network Powered Autonomous Vehicle
                 </p>
@@ -31,7 +31,7 @@
 
                 <div class="controls-panel">
                     <div class="section">
-                        <h3>🎛️ Controls</h3>
+                        <h3>Controls</h3>
                         <div class="control-group">
                             <button
                                 id="startBtn"
@@ -47,6 +47,12 @@
                                 Use Pretrained Brain
                             </button>
                             <button
+                                id="notUsePretrainedBrain"
+                                class="btn btn-danger"
+                            >
+                                Don't Use Pretrained Brain
+                            </button>
+                            <button
                                 id="stopBtn"
                                 class="btn btn-secondary"
                                 style="display: none !important"
@@ -60,7 +66,7 @@
                     </div>
 
                     <div class="section">
-                        <h3>🧠 Neural Network</h3>
+                        <h3>Neural Network</h3>
                         <div class="control-group">
                             <label for="carCount"
                                 >Cars:
@@ -92,20 +98,20 @@
 
                         <div class="control-group">
                             <button id="saveBtn" class="btn btn-success">
-                                💾 Save Best Brain
+                                Save Best Brain
                             </button>
                             <button id="loadBtn" class="btn btn-info">
-                                📁 Load Brain
+                                Load Brain
                             </button>
                             <button id="deleteBtn" class="btn btn-warning">
-                                🗑️ Delete Brain
+                                Delete Brain
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="controls-panel">
                     <div class="section">
-                        <h3>📊 Statistics</h3>
+                        <h3>Statistics</h3>
                         <div class="stats">
                             <div class="stat-item">
                                 <span class="stat-label">Generation:</span>
@@ -133,7 +139,7 @@
                     </div>
 
                     <div class="section">
-                        <h3>🎨 Visual Settings</h3>
+                        <h3>Visual Settings</h3>
                         <div class="control-group">
                             <label class="checkbox-label">
                                 <input
